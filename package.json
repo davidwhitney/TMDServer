@@ -1,0 +1,9 @@
+{
+    "name": "rest-api",
+    "version": "0.0.1",
+    "description": "Rest API Example",
+    "dependencies": {
+      "twit": "^2.2.11"
+    },
+    "license": "MIT"
+}
