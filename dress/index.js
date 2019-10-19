@@ -189,7 +189,7 @@ const screen_name = 'david_whitney';
 
 const ok = color => { return { status: 200, body: color } };
 const twitterIsRateLimiting = err => typeof err !== 'undefined' && err.statusCode === 429 && err.code === 88;
-const responseIsInvalid = r => r === throttlingClient.throttledCall || typeof resp === 'undefined' || twitterIsRateLimiting(r.err);
+const responseIsInvalid = r => r === throttlingClient.throttledCall || typeof r === 'undefined' || twitterIsRateLimiting(r.err);
 
 const tryExtractColourFrom = body => { return body.replace(`@${screen_name}`, '').trim().toLowerCase(); };
 const selectColourFrom = tweet => { return typeof tweet !== 'undefined' ? values[tweet.colour] : lastValidColour };
