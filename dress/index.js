@@ -1,7 +1,7 @@
 const Twit = require("twit");
-const ThrottlingClient = require('./lib/throttlingclient');
-const ColourFetcher = require('./lib/colourfetcher');
-const colourmap = require('./lib/colourmap');
+const ThrottlingClient = require('./throttlingclient');
+const ColourFetcher = require('./colourfetcher');
+const colourmap = require('./colourmap');
 
 const screen_name = process.env.SCREEN_NAME;
 const client = new ThrottlingClient(new Twit({
