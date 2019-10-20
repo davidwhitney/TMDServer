@@ -1,6 +1,5 @@
 const ColourFetcher = require('./colourfetcher');
 const colours = require('./colourmap');
-const ThrottlingClient = require('./throttlingclient');
 
 describe('The Colour Fetcher', () => {   
     it('returns the safe default when no valid tweets are found', async () => {

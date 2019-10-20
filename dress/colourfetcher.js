@@ -25,7 +25,9 @@ class ColourFetcher {
     
     ok(color) { return { status: 200, body: color } };
     twitterIsRateLimiting(err){ return typeof err !== 'undefined' && err.statusCode === 429 && err.code === 88;}
-    responseIsInvalid(r) { return r === null || r.data === null || r === this.client.throttledCall || typeof r === 'undefined' || this.twitterIsRateLimiting(r.err) };
+    responseIsInvalid(r) { 
+      return r === null || r.data === null || r === this.client.throttledCall || typeof r === 'undefined' || this.twitterIsRateLimiting(r.err) 
+    };
     
     tryExtractColourFrom(body) { return body.replace(`@${this.screen_name}`, '').trim().toLowerCase(); };
     selectColourFrom(tweet) { return typeof tweet !== 'undefined' ? this.values[tweet.colour] : this.lastValidColour };
