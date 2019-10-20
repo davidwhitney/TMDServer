@@ -6,9 +6,7 @@ class ThrottlingClient {
         this.throttledCall = { throttled: true };
     }
     
-    requestShouldBeThrottled() { 
-        return this.nextCallDate != null && Date.now() < this.nextCallDate 
-    }
+    requestShouldBeThrottled() { return this.nextCallDate != null && Date.now() < this.nextCallDate }
 
     async get(timelineUri, timelineQuery) {       
       if (this.requestShouldBeThrottled()) {
@@ -23,15 +21,7 @@ class ThrottlingClient {
       return result;
     }
     
-    responseIsInvalid(r) {
-      return r == null || typeof r === 'undefined' || typeof r.resp === 'undefined' || typeof r.resp.headers === 'undefined'
-    }
-    
     calculateNextCallTime(result) {
-      if(this.responseIsInvalid(result)) {
-        return;
-      }
-
       const resetsAt = new Date(result.resp.headers['x-rate-limit-reset']*1000);    
       this.remainingCallsPerPeriod = result.resp.headers['x-rate-limit-remaining'];
       this.nextCallDate = new Date(Date.now() + ((resetsAt - Date.now()) / this.remainingCallsPerPeriod));
